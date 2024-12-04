@@ -15,7 +15,12 @@ func ParseBoardList(contents []byte) engine.ParseResult {
 	result := engine.ParseResult{}
 	// 3. 印出來
 	for _, match := range matches {
-		result.Items = append(result.Items, string(match[2]))
+		// item := engine.Item{
+		// 	Site:    "ptt",
+		// 	Url:     ptt.PTT_URL + string(match[1]),
+		// 	Payload: string(match[2]),
+		// }
+		// result.Items = append(result.Items, item)
 		result.Requests = append(result.Requests, engine.Request{
 			Url:        ptt.PTT_URL + string(match[1]),
 			ParserFunc: ParseArticleList,

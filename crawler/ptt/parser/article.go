@@ -32,6 +32,11 @@ func ParseArticle(contents []byte) engine.ParseResult {
 	if urlReMatch := urlRe.FindSubmatch(contents); urlReMatch != nil {
 		article.Url = string(urlReMatch[1])
 	}
-	result.Items = append(result.Items, article)
+	item := engine.Item{
+		Site:    "ptt",
+		Url:     article.Url,
+		Payload: article,
+	}
+	result.Items = append(result.Items, item)
 	return result
 }

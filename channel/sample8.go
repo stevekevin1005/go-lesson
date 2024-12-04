@@ -40,9 +40,9 @@ func createSample8Worker(id int) worker {
 func doSample8Work(id int, c chan int, done chan bool) {
 	for n := range c {
 		fmt.Printf("Worker %d received %c\n", id, n)
-		// done <- true
-		go func() {
-			done <- true
-		}()
+		done <- true
+		// go func() {
+		// 	done <- true
+		// }()
 	}
 }

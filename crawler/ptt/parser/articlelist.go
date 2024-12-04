@@ -31,14 +31,19 @@ func ParseArticleList(contents []byte) engine.ParseResult {
 		})
 	}
 	// 2. 解析HTML 找到文章列表的文章 URL
-	matches := articleListRe.FindAllSubmatch(contents, -1)
-	for _, match := range matches {
-		url := ptt.PTT_URL + string(match[1])
-		result.Requests = append(result.Requests, engine.Request{
-			Url:        url,
-			ParserFunc: ParseArticle,
-		})
-		result.Items = append(result.Items, NewArticle(string(match[2]), url))
-	}
+	// matches := articleListRe.FindAllSubmatch(contents, -1)
+	// for _, match := range matches {
+	// 	url := ptt.PTT_URL + string(match[1])
+	// 	result.Requests = append(result.Requests, engine.Request{
+	// 		Url:        url,
+	// 		ParserFunc: ParseArticle,
+	// 	})
+	// 	item := engine.Item{
+	// 		Site:    "ptt",
+	// 		Url:     url,
+	// 		Payload: NewArticle(string(match[2]), url),
+	// 	}
+	// result.Items = append(result.Items, item)
+	// }
 	return result
 }
